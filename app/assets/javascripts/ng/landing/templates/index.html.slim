@@ -1,10 +1,9 @@
 .jumbotron ng-if="!user.signedIn"
     h1 Hello comrade!
     p To access your task list you have to sing in!
-    a.btn.btn-default href="#/login" Login
-    a.btn.btn-default href="#/sign_up" Sign Up
+    a.btn.btn-default ui-sref="login" Login
+    a.btn.btn-default ui-sref="registration" Sign Up
 div ng-if="user.signedIn" ng-controller="core.TasksCtrl as ctrl"
-
   form.form
     .form-group
       label for="description" Work On

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root to: "site/home#index"
+  root to: 'home#index'
 
   namespace :api do
-    resources :tasks, only: [:index, :create, :update, :destroy]
-    resource :user, only: :update
+    resource :session, only: [:create, :destroy]
+    resources :trips, only: [:index, :create, :update, :destroy]
   end
 end

@@ -1,37 +1,31 @@
+#= require angular
+#= require angular-rails-templates
+#= require angular-bootstrap
+#= require angular-route
+#= require restangular
+#= require alertify
+#= require ui-router
+#= require ng/app
+
 @core = angular.module('App.core', [
   'templates'
-  'ui.bootstrap'
   'restangular'
-  'ngRoute'
-  'ng-token-auth'
+  'ui.router'
 ])
-.config([
-  '$routeProvider', '$locationProvider',
-  ($routeProvider, $locationProvider)->
-    $routeProvider
-    .when('/',
-      templateUrl: "core/templates/index.html"
-      controller: 'core.HomeCtrl as ctrl'
-    )
-    .when('/login',
-      templateUrl: 'core/templates/login.html'
-      controller: 'core.SessionCtrl as ctrl'
-    )
-    .when('/sign_up',
-      templateUrl: 'core/templates/sign_up.html'
-      controller: 'core.SignUpCtrl as ctrl'
-    )
-    .when('/settings'
-      templateUrl: 'core/templates/settings.html'
-      controller: 'core.SettingsCtrl as ctrl'
-    )
-])
-.config([
-  '$authProvider',
-  ($authProvider)->
-    $authProvider.configure
-      apiUrl: '/api'
-      handleTokenValidationResponse: (response)->
-        _.merge Env.currentUser, response.data
+
+@core.config ['$urlRouterProvider', ($urlRouterProvider) ->
+  $urlRouterProvider.otherwise("/")
+]
+
+@core.run([
+  '$rootScope', 'SessionService',
+  ($rootScope, SessionService) ->
+    # defining rootscope binding
+    $rootScope.session = SessionService
+    $rootScope.currentUser = SessionService.user
+
+    # checking access of current user
+    $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
+      SessionService.checkAccess(event, toState, toParams, fromState, fromParams)
 ])
 

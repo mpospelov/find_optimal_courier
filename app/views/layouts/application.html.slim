@@ -2,11 +2,11 @@ doctype html
 html ng-app='App'
   head
     base href="/"
-    title Toptal TODO app
+    title Toptal Trips app
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    = render "site/shared/navbar"
-    .container ng-view=""
+    = render "shared/navbar"
+    .container ui-view=""
 
