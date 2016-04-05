@@ -1,0 +1,20 @@
+.jumbotron ng-if="!user.signedIn"
+    h1 Hello comrade!
+    p To access your task list you have to sing in!
+    a.btn.btn-default href="#/login" Login
+    a.btn.btn-default href="#/sign_up" Sign Up
+div ng-if="user.signedIn" ng-controller="core.TasksCtrl as ctrl"
+
+  form.form
+    .form-group
+      label for="description" Work On
+      input.form-control ng-model="ctrl.newTaskForm.description" type="text"
+    .form-group
+      label for="description" Date
+      input.form-control ng-model="ctrl.newTaskForm.date" type="date"
+    .form-group
+      label for="description" Duration(minutes)
+      input.form-control ng-model="ctrl.newTaskForm.duration" type="number"
+    button.btn.btn-success ng-click="ctrl.createTask()" type="submit" Add
+
+  task-list tasks="ctrl.tasks" on-delete-task="ctrl.deleteTask(task)" on-update-task="ctrl.updateTask(task, params)"

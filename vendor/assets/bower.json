@@ -1,0 +1,16 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "lodash": "3.10.1",
+    "angular": "1.5.3",
+    "bootstrap-sass": "3.3.5",
+    "moment": "2.10.6",
+    "angular-bootstrap": "0.13.4",
+    "jquery": "2.1.4",
+    "restangular": "1.5.1",
+    "alertify": "0.3.10",
+    "angular-route": "1.4.7",
+    "ng-token-auth": "0.0.28",
+    "angular-cookie": "4.0.9"
+  }
+}

@@ -1,0 +1,8 @@
+ruby version - 2.2.3
+rails version - 4.2.4
+Database - postgresql
+
+Steps to launch
+1. `bundle`
+2. `rake db:create` - `rake db:migrate`
+3. `rake bower:install`
