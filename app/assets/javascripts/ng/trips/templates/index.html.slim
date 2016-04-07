@@ -1,0 +1,20 @@
+h2 Your Trips
+
+a.btn.btn-success ui-sref="trips.new" role="button" Create new trip
+table.table.table-bordered.table-striped
+  thead
+    th Destination
+    th Start date
+    th End date
+    th Comment
+    th Days to start
+    th
+  tbody
+    tr ng-class="tripClasses(trip)" ng-repeat="trip in trips_ctrl.trips"
+      td ng-bind="trip.destination"
+      td ng-bind="trip.start_date"
+      td ng-bind="trip.end_date"
+      td ng-bind="trip.comment"
+      td ng-bind="trips_ctrl.daysToStart(trip)"
+      td
+

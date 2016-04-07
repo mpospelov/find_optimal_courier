@@ -1,5 +1,6 @@
 class @landing.LandingController
   landing.controller 'landing.LandingController', @
 
-  @$inject: []
-  constructor: ->
+  @$inject: ['SessionService', '$state']
+  constructor: (SessionService, $state) ->
+    $state.go('trips.list') if SessionService.isAuthenticated()

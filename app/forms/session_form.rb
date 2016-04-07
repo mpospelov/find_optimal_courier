@@ -1,9 +1,9 @@
 class SessionForm
   include ActiveModel::Validations
 
-  attr_reader :login_field
+  attr_reader :email
 
-  validates :login_field, presence: true
+  validates :email, presence: true
 
   validate :validate_user_authenticated
 
@@ -13,7 +13,7 @@ class SessionForm
 
   def validate(params)
     @password = params[:password]
-    @login_field = params[:login_field]
+    @email = params[:email]
     super
   end
 

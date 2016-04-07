@@ -1,0 +1,35 @@
+a.btn.btn-default ui-sref="trips.list" role="button" Back
+
+h2 New Trip
+form
+  trips-input(
+    name="destination"
+    label="Destination"
+    placeholder="Destination"
+    type="text"
+    model="trips_ctrl.form.destination"
+    error="trips_ctrl.errors.destination")
+  trips-input(
+    name="start_date"
+    label="Start date"
+    placeholder="Start date"
+    type="date"
+    model="trips_ctrl.form.start_date"
+    error="trips_ctrl.errors.start_date")
+  trips-input(
+    name="end_date"
+    label="End date"
+    placeholder="End date"
+    type="date"
+    model="trips_ctrl.form.end_date"
+    error="trips_ctrl.errors.end_date")
+  trips-input(
+    name="comment"
+    label="Comment"
+    placeholder="Comment"
+    type="text"
+    model="trips_ctrl.form.comment"
+    error="trips_ctrl.errors.comment")
+  button.btn.btn-lg.btn-primary.btn-block(
+    ng-click="trips_ctrl.submit()"
+    type="submit") Create

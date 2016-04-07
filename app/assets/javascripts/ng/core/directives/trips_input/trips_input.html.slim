@@ -1,0 +1,8 @@
+.form-group ng-class="classes()"
+  label for="{{::name}}" ng-bind="label"
+  input.form-control(
+    ng-model="model"
+    type="{{::type}}"
+    placeholder="{{::placeholder}}"
+    name="{{::name}}")
+  span.help-block ng-if="hasError" ng-bind="errorMessage()"

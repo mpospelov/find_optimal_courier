@@ -1,5 +1,5 @@
-class UserPresenter < BasePresenter
+class CurrentUserPresenter < BasePresenter
   property :id
   property :email
-  property :preferred_working_hours_per_day
+  property :role
 end

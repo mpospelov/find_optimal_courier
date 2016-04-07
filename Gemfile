@@ -10,10 +10,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', require: true
 gem 'angular-rails-templates'
 gem 'sprockets', '~> 3.0'
-gem "bower-rails", "~> 0.10.0"
+gem 'bower-rails', '~> 0.10.0'
 gem 'slim-rails'
 gem 'representable'
 gem 'reform'
+gem 'virtus'
+gem 'multi_json'
 
 group :development, :test do
   gem 'quiet_assets'

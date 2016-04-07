@@ -1,20 +1,19 @@
-form.form-signin
-  h2.form-signin-heading Please login
-  label.sr-only for="email" Email address
-  input.form-control(
-    autofocus=""
+form
+  h2 Please login
+  trips-input(
     name="email"
+    label="Email address"
     placeholder="Email address"
-    required=""
     type="email"
-    ng-model="login_ctrl.form.email")
-  label.sr-only for="inputPassword" Password
-  input.form-control(
+    model="login_ctrl.form.email"
+    error="login_ctrl.errors.email")
+  trips-input(
     name="password"
+    label="Password"
     placeholder="Password"
-    required=""
     type="password"
-    ng-model="login_ctrl.form.password")
+    model="login_ctrl.form.password"
+    error="login_ctrl.errors.password")
   button.btn.btn-lg.btn-primary.btn-block(
     ng-click="login_ctrl.submit()"
     type="submit") Login

@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :trip do
-    destination "MyString"
-    start_date "2016-04-06"
-    end_date "2016-04-06"
-    comment "MyText"
+    destination { Faker::Address.country }
+    start_date { Faker::Date.forward(23) }
+    end_date { Faker::Date.forward(23) + 23 }
+    comment { Faker::Lorem.sentence }
   end
 end

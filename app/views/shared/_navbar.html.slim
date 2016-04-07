@@ -6,8 +6,11 @@ nav.navbar.navbar-default.navbar-fixed-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="#/"  TopTal Trips Application
-    #navbar.navbar-collapse.collapse
+      a.navbar-brand ui-sref="home" TopTal Trips Application
+    #navbar.navbar-collapse.collapse ng-cloak=""
+      ul.nav.navbar-nav
+        li ng-class="{ active: ('trips' | includedByState) }" ng-if="session.isAuthenticated()"
+          a ui-sref="trips.list" Trips
       ul.nav.navbar-nav.navbar-right
         li ng-if="!session.isAuthenticated()"
           a ui-sref="login" Login
