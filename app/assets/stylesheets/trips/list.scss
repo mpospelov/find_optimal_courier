@@ -1,0 +1,17 @@
+$green: #DFF0D8;
+$yellow: #FCF8E3;
+$red: #F2DEDE;
+
+.trips-list__row {
+  &.is-past {
+    background: $red;
+  }
+
+  &.is-active {
+    background: $yellow;
+  }
+
+  &.is-future {
+    background: $green;
+  }
+}
