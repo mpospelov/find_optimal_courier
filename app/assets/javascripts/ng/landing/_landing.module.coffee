@@ -5,4 +5,10 @@
     url: '/'
     controller: 'landing.LandingController'
     templateUrl: 'landing/templates/index.html'
+    resolve:
+      currentUser: [
+        'SessionService',
+        (SessionService) ->
+          SessionService.onFetchUser
+      ]
 ]

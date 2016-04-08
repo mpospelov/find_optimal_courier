@@ -6,8 +6,12 @@
       @user = {}
       @onFetchUserDefer = @$q.defer()
       @onFetchUser = @onFetchUserDefer.promise
-      @Restangular.service('user').one().get().then (user) =>
-        @setUser(user)
+      @Restangular.service('user').one().get()
+        .then (user) =>
+          @setUser(user)
+        .catch =>
+          @setUser({})
+
       @RESTsessionService = @Restangular.service('session').one()
 
     isAuthenticated: ->
