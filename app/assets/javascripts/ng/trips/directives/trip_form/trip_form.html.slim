@@ -1,0 +1,32 @@
+form
+  trips-input(
+    name="destination"
+    label="Destination"
+    placeholder="Destination"
+    type="text"
+    model="trip.destination"
+    error="tripErrors.destination")
+  trips-input(
+    name="start_date"
+    label="Start date"
+    placeholder="Start date"
+    type="date"
+    model="trip.start_date"
+    error="tripErrors.start_date")
+  trips-input(
+    name="end_date"
+    label="End date"
+    placeholder="End date"
+    type="date"
+    model="trip.end_date"
+    error="tripErrors.end_date")
+  trips-input(
+    name="comment"
+    label="Comment"
+    placeholder="Comment"
+    type="text"
+    model="trip.comment"
+    error="tripErrors.comment")
+  button.btn.btn-lg.btn-primary.btn-block(
+    ng-click="onSubmit()"
+    type="submit") Save

@@ -1,0 +1,8 @@
+.expand-animation {
+  transition: 1s linear all;
+  height: 100px;
+
+  &.ng-enter, &.ng-leave {
+    height: 0px;
+  }
+}

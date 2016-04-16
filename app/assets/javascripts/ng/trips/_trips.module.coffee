@@ -16,4 +16,9 @@
     controller: 'trips.NewController'
     controllerAs: 'trips_ctrl'
     templateUrl: 'trips/templates/new.html'
+  .state 'trips.edit',
+    url: '/:id'
+    controller: 'trips.EditController'
+    controllerAs: 'trips_ctrl'
+    templateUrl: 'trips/templates/edit.html'
 ]

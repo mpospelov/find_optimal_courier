@@ -1,0 +1,19 @@
+form.trips-filter-form
+  trips-input(
+    name="destination"
+    label="Destination"
+    placeholder="Destination"
+    type="text"
+    model="query.destination")
+  trips-input(
+    name="starts_after"
+    label="Starts after"
+    placeholder="Start date"
+    type="date"
+    model="query.starts_after")
+  trips-input(
+    name="ends_before"
+    label="End date"
+    placeholder="Ends before"
+    type="date"
+    model="query.ends_before")

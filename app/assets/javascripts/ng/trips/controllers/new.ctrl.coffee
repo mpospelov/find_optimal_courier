@@ -1,8 +1,13 @@
 class trips.NewController
   trips.controller 'trips.NewController', @
-  @inject: ['TripsService']
+  @inject: ['TripsService', '$state']
 
-  constructor: (TripsService) ->
+  constructor: (@TripsService, @$state) ->
     @form = {}
 
   submit: ->
+    @TripsService.post(@form)
+    .then =>
+      @$state.go('trips.list')
+      alertify.success('Trip succesfully created!')
+    .catch ->

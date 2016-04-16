@@ -3,6 +3,7 @@
 
 asset 'lodash', '3.10.1'
 asset 'angular', '1.5.3'
+asset 'angular-animate', '1.5.3'
 asset 'bootstrap-sass', '3.3.5'
 asset 'moment', '2.12.0'
 asset 'angular-bootstrap', '0.13.4'

@@ -1,5 +1,4 @@
-class TripPresenter < BasePresenter
-  property :id
+class TripForm < BaseForm
   property :destination
   property :start_date
   property :end_date

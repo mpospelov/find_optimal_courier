@@ -2,14 +2,35 @@ class trips.ListController
   trips.controller 'trips.ListController', @
   @inject: ['TripsService']
 
-  constructor: (TripsService) ->
-    @trips = TripsService.getList().$object
+  constructor: (@TripsService) ->
+    @query = {}
+    @fetchTrips()
+    @showFilter = false
+
+  fetchTrips: ->
+    @TripsService.getList(@query)
+    .then (data) =>
+      @trips = data
+
+  filterFormBtnLabel: ->
+    if @showFilter then 'Hide filter' else 'Show filter'
+
+  toogleFilterForm: ->
+    @showFilter = !@showFilter
 
   daysToStart: (trip) ->
     if @$$isFuture(trip)
       @$$startDateDiff(trip)
+    else if @$$isPast(trip)
+      'Ended'
     else
-      'Already started'
+      'Started'
+
+  delete: (trip) ->
+    trip.remove()
+    .then =>
+      alertify.success('Successfully deleted')
+      _.remove(@trips, trip)
 
   tripClasses: (trip) ->
     'is-past': @$$isPast(trip)

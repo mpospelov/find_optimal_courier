@@ -2,16 +2,28 @@ $green: #DFF0D8;
 $yellow: #FCF8E3;
 $red: #F2DEDE;
 
-.trips-list__row {
-  &.is-past {
-    background: $red;
+.trips-list {
+  &__actions {
+    width: 150px;
+    text-align: center;
   }
 
-  &.is-active {
-    background: $yellow;
+  &__date {
+    width: 100px;
+    text-align: center;
   }
 
-  &.is-future {
-    background: $green;
+  &__row {
+    &.is-past {
+      background: $red;
+    }
+
+    &.is-active {
+      background: $yellow;
+    }
+
+    &.is-future {
+      background: $green;
+    }
   }
 }

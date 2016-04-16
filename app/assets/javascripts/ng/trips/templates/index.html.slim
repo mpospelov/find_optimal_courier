@@ -2,6 +2,14 @@
   h2 Your Trips
 
   a.btn.btn-success ui-sref="trips.new" role="button" Create new trip
+
+  h3 Filters
+  a.btn.btn-success(
+    ng-click="trips_ctrl.toogleFilterForm()"
+    role="button"
+    ng-bind="trips_ctrl.filterFormBtnLabel()")
+  trips-filter-form.expand-animation ng-if="trips_ctrl.showFilter" query="trips_ctrl.query"
+
   table.table.table-bordered
     thead
       th Destination
@@ -12,10 +20,13 @@
       th
     tbody
       tr.trips-list__row ng-class="trips_ctrl.tripClasses(trip)" ng-repeat="trip in trips_ctrl.trips"
-        td ng-bind="trip.destination"
-        td ng-bind="trip.start_date"
-        td ng-bind="trip.end_date"
-        td ng-bind="trip.comment"
-        td ng-bind="trips_ctrl.daysToStart(trip)"
-        td
+        td ng-bind="::trip.destination"
+        td.trips-list__date ng-bind="::trip.start_date | dateFormat"
+        td.trips-list__date ng-bind="::trip.end_date | dateFormat"
+        td ng-bind="::trip.comment"
+        td ng-bind="::trips_ctrl.daysToStart(trip)"
+        td.trips-list__actions
+          .btn-group
+            a.btn.btn-success ui-sref="trips.edit({id: trip.id})" Edit
+            a.btn.btn-danger ng-click="trips_ctrl.delete(trip)" Delete
 
