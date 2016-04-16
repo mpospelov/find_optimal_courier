@@ -17,6 +17,12 @@
     isAuthenticated: ->
       Boolean(@user.id)
 
+    isAdmin: ->
+      @isAuthenticated() && @user.role == 'admin'
+
+    isManager: ->
+      @isAuthenticated() && @user.role == 'manager'
+
     setUser: (user) ->
       _.merge @user, user
       @onFetchUserDefer.resolve(@user)
@@ -34,5 +40,3 @@
           loginDefer.resolve(@user)
         .catch loginDefer.reject
       loginDefer.promise
-
-    checkAccess: (event, toState, toParams, fromState, fromParams) ->

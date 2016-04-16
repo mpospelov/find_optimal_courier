@@ -19,16 +19,3 @@
 @core.config ['$urlRouterProvider', ($urlRouterProvider) ->
   $urlRouterProvider.otherwise('/')
 ]
-
-@core.run([
-  '$rootScope', 'SessionService',
-  ($rootScope, SessionService) ->
-    # defining rootscope binding
-    $rootScope.session = SessionService
-    $rootScope.currentUser = SessionService.user
-
-    # checking access of current user
-    $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
-      SessionService.checkAccess(event, toState, toParams, fromState, fromParams)
-])
-

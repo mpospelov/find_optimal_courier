@@ -10,7 +10,12 @@ nav.navbar.navbar-default.navbar-fixed-top
     #navbar.navbar-collapse.collapse ng-cloak=""
       ul.nav.navbar-nav
         li ng-class="{ active: ('trips' | includedByState) }" ng-if="session.isAuthenticated()"
-          a ui-sref="trips.list" Trips
+          a ui-sref="trips.list" Your Trips
+        li ng-class="{ active: ('admin_trips' | includedByState) }" ng-if="session.isManager() || session.isAdmin()"
+          a ui-sref="all_trips.list" All Trips
+        li ng-class="{ active: ('admin_users' | includedByState) }" ng-if="session.isAdmin()"
+          a ui-sref="users.list" Users
+
       ul.nav.navbar-nav.navbar-right
         li ng-if="!session.isAuthenticated()"
           a ui-sref="login" Login
