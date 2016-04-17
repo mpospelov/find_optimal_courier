@@ -15,11 +15,11 @@ nav.navbar.navbar-default.navbar-fixed-top
           a ui-sref="trips.list" Your Trips
         li(
           ng-class="{ active: ('admin.trips' | includedByState) }"
-          ng-if="currentUser.isManager() || currentUser.isAdmin()")
+          ng-if="session.user.isManager() || session.user.isAdmin()")
           a ui-sref="admin.trips.list" All Trips
         li(
           ng-class="{ active: ('admin.users' | includedByState) }"
-          ng-if="currentUser.isAdmin()")
+          ng-if="session.user.isAdmin()")
           a ui-sref="admin.users.list" Users
 
       ul.nav.navbar-nav.navbar-right

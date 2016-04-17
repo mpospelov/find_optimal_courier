@@ -31,6 +31,5 @@
   '$rootScope', 'SessionService',
   ($rootScope, SessionService) ->
     $rootScope.session = SessionService
-    $rootScope.currentUser = SessionService.user
 ])
 
