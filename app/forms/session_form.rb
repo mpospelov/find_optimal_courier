@@ -25,6 +25,6 @@ class SessionForm
 
   def validate_user_authenticated
     return if @user.present? && PasswordCheckerService.new(@user).valid_password?(@password)
-    errors.add(:base, 'Invalid login field or password')
+    errors.add(:base, 'Invalid email or password')
   end
 end

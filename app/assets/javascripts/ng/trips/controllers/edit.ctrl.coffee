@@ -3,7 +3,12 @@ class trips.EditController
   @inject: ['TripsService', '$state']
 
   constructor: (TripsService, @$state) ->
-    @trip = TripsService.one(@$state.params.id).get().$object
+    TripsService.one(@$state.params.id).get()
+    .then (data) =>
+      @trip = data
+    .catch =>
+      @$state.go('trips.list')
+      alertify.error('Trip not found')
 
   submit: ->
     @trip.customPUT(@trip)

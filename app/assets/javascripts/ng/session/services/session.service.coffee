@@ -1,40 +1,32 @@
 @session.service 'SessionService',
   class SessionService
-    @$inject: ['Restangular', '$state', '$q']
+    @$inject: ['CurrentUserService', 'RESTSessionService', '$state', '$q']
 
-    constructor: (@Restangular, @$state, @$q) ->
+    constructor: (CurrentUserService, @RESTSessionService, @$state, @$q) ->
       @user = {}
       @onFetchUserDefer = @$q.defer()
       @onFetchUser = @onFetchUserDefer.promise
-      @Restangular.service('user').one().get()
+      CurrentUserService.get()
         .then (user) =>
           @setUser(user)
         .catch =>
           @setUser({})
 
-      @RESTsessionService = @Restangular.service('session').one()
-
     isAuthenticated: ->
       Boolean(@user.id)
-
-    isAdmin: ->
-      @isAuthenticated() && @user.role == 'admin'
-
-    isManager: ->
-      @isAuthenticated() && @user.role == 'manager'
 
     setUser: (user) ->
       _.merge @user, user
       @onFetchUserDefer.resolve(@user)
 
     logout: ->
-      @RESTsessionService.customDELETE().then =>
+      @RESTSessionService.customDELETE().then =>
         @user = {}
         @$state.go('home')
 
     login: (params) ->
       loginDefer = @$q.defer()
-      @RESTsessionService.customPOST(params)
+      @RESTSessionService.customPOST(params)
         .then (data) =>
           @setUser(data)
           loginDefer.resolve(@user)

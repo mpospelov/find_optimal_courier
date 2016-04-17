@@ -5,3 +5,15 @@
   'App.admin.trips'
   'App.admin.users'
 ]
+
+@admin.config ['$stateProvider', ($stateProvider) ->
+  $stateProvider
+  .state 'admin',
+    url: '/admin'
+    abstract: true
+    template: '<ui-view>'
+    resolve:
+      currentUser: ['SessionService', (SessionService) ->
+        SessionService.onFetchUser
+      ]
+]

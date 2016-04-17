@@ -1,16 +1,16 @@
-class @session.RegistrationController
+class session.RegistrationController
   session.controller 'session.RegistrationController', @
+  @$inject: ['RegistrationService', 'SessionService', '$state']
 
-  @$inject: ['Restangular', '$state']
-  constructor: (Restangular, @$state) ->
+  constructor: (@RegistrationService, @SessionService, @$state) ->
     @form = {}
     @errors = {}
-    @RegistrationService = Restangular.service('registration')
 
   submit: ->
-    @RegistrationService.post(@form).then (data) =>
+    @RegistrationService.post(@form).then (user) =>
       alertify.success('Sign up successfully!')
-      @$state.go('home')
+      @SessionService.setUser(user)
+      @$state.go('trips.list')
     .catch (response) =>
       @errors = response.data
       if response.data.base
