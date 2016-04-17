@@ -1,0 +1,7 @@
+.form-group
+  label for="{{::name}}" ng-bind="label"
+
+  select.form-control ng-model="model"
+    option ng-repeat="(key, value) in optionsForSelect" value="{{ value }}" ng-bind="key"
+
+  span.help-block ng-if="hasError" ng-bind="errorMessage()"

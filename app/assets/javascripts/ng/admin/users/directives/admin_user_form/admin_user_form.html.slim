@@ -1,0 +1,25 @@
+form
+  trips-input(
+    name="email"
+    label="Email"
+    placeholder="Email"
+    type="text"
+    model="user.email"
+    error="userErrors.email")
+  trips-input(
+    name="password"
+    label="Password"
+    placeholder="Password"
+    type="password"
+    model="user.password"
+    error="userErrors.password")
+  trips-select(
+    name="role"
+    label="Role"
+    model="user.role"
+    options="['common', 'manager', 'admin']"
+    error="userErrors.role")
+
+  button.btn.btn-lg.btn-primary.btn-block(
+    ng-click="onSubmit()"
+    type="submit") Save

@@ -1,0 +1,29 @@
+$green: #DFF0D8;
+$yellow: #FCF8E3;
+$red: #F2DEDE;
+
+.list {
+  &__actions {
+    width: 150px;
+    text-align: center;
+  }
+
+  &__date {
+    width: 100px;
+    text-align: center;
+  }
+
+  &__row {
+    &.is-past {
+      background: $red;
+    }
+
+    &.is-active {
+      background: $yellow;
+    }
+
+    &.is-future {
+      background: $green;
+    }
+  }
+}

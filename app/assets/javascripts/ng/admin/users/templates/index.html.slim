@@ -1,23 +1,23 @@
 .users-list
   h2 Users
 
-  a.btn.btn-success ui-sref="users.new" role="button" Create new user
+  a.btn.btn-success ui-sref="admin.users.new" role="button" Create new user
 
   table.table.table-bordered
     thead
+      th Id
       th Email
       th Role
       th Created at
       th
     tbody
-      tr.users-list__row ng-class="users_ctrl.userClasses(user)" ng-repeat="user in users_ctrl.users"
-        td ng-bind="::user.destination"
-        td.users-list__date ng-bind="::user.start_date | dateFormat"
-        td.users-list__date ng-bind="::user.end_date | dateFormat"
-        td ng-bind="::user.comment"
-        td ng-bind="::users_ctrl.daysToStart(user)"
-        td.users-list__actions
+      tr.list__row ng-class="users_ctrl.userClasses(user)" ng-repeat="user in users_ctrl.users"
+        td ng-bind="::user.id"
+        td ng-bind="::user.email"
+        td ng-bind="::user.role"
+        td ng-bind="::user.created_at"
+        td.list__actions
           .btn-group
-            a.btn.btn-success ui-sref="users.edit({id: user.id})" Edit
+            a.btn.btn-success ui-sref="admin.users.edit({id: user.id})" Edit
             a.btn.btn-danger ng-click="users_ctrl.delete(user)" Delete
 

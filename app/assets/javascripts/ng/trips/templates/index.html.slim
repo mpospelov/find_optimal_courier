@@ -1,4 +1,4 @@
-.trips-list
+.list
   h2 Your Trips
 
   a.btn.btn-success ui-sref="trips.new" role="button" Create new trip
@@ -19,13 +19,13 @@
       th Days to start
       th
     tbody
-      tr.trips-list__row ng-class="trips_ctrl.tripClasses(trip)" ng-repeat="trip in trips_ctrl.trips"
+      tr.list__row ng-class="trips_ctrl.tripClasses(trip)" ng-repeat="trip in trips_ctrl.trips"
         td ng-bind="::trip.destination"
-        td.trips-list__date ng-bind="::trip.start_date | dateFormat"
-        td.trips-list__date ng-bind="::trip.end_date | dateFormat"
+        td.list__date ng-bind="::trip.start_date | dateFormat"
+        td.list__date ng-bind="::trip.end_date | dateFormat"
         td ng-bind="::trip.comment"
         td ng-bind="::trips_ctrl.daysToStart(trip)"
-        td.trips-list__actions
+        td.list__actions
           .btn-group
             a.btn.btn-success ui-sref="trips.edit({id: trip.id})" Edit
             a.btn.btn-danger ng-click="trips_ctrl.delete(trip)" Delete

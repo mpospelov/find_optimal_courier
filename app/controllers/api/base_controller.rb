@@ -2,6 +2,7 @@ module Api
   class BaseController < ApplicationController
     UNRESPONSIBLE_ENTITY = 422
     UNAUTHORIZED = 401
+    PERMISSION_DENIED = 403
     HTTP_OK = 200
 
     protected
