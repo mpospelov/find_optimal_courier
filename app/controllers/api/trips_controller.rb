@@ -3,7 +3,9 @@ module Api
     before_filter :authenticate_user!
 
     def index
-      render_object(TripPresenter.for_collection.new(current_user.trips))
+      render_object(
+        TripPresenter.for_collection.new(
+          TripsQuery.new(current_user.trips, params).all))
     end
 
     def show

@@ -10,6 +10,7 @@
     "jquery": "2.1.4",
     "restangular": "1.5.1",
     "alertify": "0.3.10",
-    "ui-router": "0.2.18"
+    "ui-router": "0.2.18",
+    "angular-print": "0.3.8"
   }
 }

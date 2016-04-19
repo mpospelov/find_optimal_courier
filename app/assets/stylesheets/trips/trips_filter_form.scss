@@ -1,8 +1,10 @@
 .expand-animation {
-  transition: 1s linear all;
-  height: 100px;
+  @include transition(1s linear max-height);
+  max-height: 500px;
+  display: block;
+  overflow: hidden;
 
-  &.ng-enter, &.ng-leave {
-    height: 0px;
+  &.ng-hide {
+    max-height: 0;
   }
 }

@@ -7,7 +7,7 @@
     abstract: true
     template: '<ui-view>'
     onEnter: ['currentUser', '$state', (currentUser, $state) ->
-      unless currentUser.isAdmin()
+      if !currentUser.isManager() || !currentUser.isAdmin()
         $state.go('home')
         alertify.error('You do not have permissions to visit this page')
     ]

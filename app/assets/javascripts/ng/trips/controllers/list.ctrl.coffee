@@ -1,30 +1,29 @@
 class trips.ListController
   trips.controller 'trips.ListController', @
-  @inject: ['TripsService']
+  @inject: ['TripsService', 'dateFormatFilter']
 
-  constructor: (@TripsService) ->
+  constructor: (@TripsService, @dateFormatFilter) ->
     @query = {}
     @fetchTrips()
     @showFilter = false
 
   fetchTrips: ->
-    @TripsService.getList(@query)
+    @TripsService.getList(@$$filterQuery(@query))
     .then (data) =>
       @trips = data
+
+  cancelFilter: ->
+    @query = {}
+    @fetchTrips()
+
+  closeFilterForm: ->
+    @showFilter = false
 
   filterFormBtnLabel: ->
     if @showFilter then 'Hide filter' else 'Show filter'
 
   toogleFilterForm: ->
     @showFilter = !@showFilter
-
-  daysToStart: (trip) ->
-    if @$$isFuture(trip)
-      @$$startDateDiff(trip)
-    else if @$$isPast(trip)
-      'Ended'
-    else
-      'Started'
 
   delete: (trip) ->
     trip.remove()
@@ -33,21 +32,12 @@ class trips.ListController
       _.remove(@trips, trip)
 
   tripClasses: (trip) ->
-    'is-past': @$$isPast(trip)
-    'is-active': @$$isActive(trip)
-    'is-future': @$$isFuture(trip)
+    'is-past': trip.isPast()
+    'is-active': trip.isActive()
+    'is-future': trip.isFuture()
 
-  $$isPast: (trip) ->
-    @$$endDateDiff(trip) < 0
-
-  $$isActive: (trip) ->
-    moment().isBetween(trip.start_date, trip.end_date)
-
-  $$isFuture: (trip) ->
-    @$$startDateDiff(trip) >= 0
-
-  $$startDateDiff: (trip) ->
-    moment(trip.start_date).diff(new Date(), 'days')
-
-  $$endDateDiff: (trip) ->
-    moment(trip.end_date).diff(new Date(), 'days')
+  $$filterQuery: (query) ->
+    query = _.clone(query)
+    query.starts_after = if !!query.starts_after then @dateFormatFilter(query.starts_after)
+    query.ends_before = if !!query.ends_before then @dateFormatFilter(query.ends_before)
+    query

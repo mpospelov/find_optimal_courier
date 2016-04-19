@@ -1,0 +1,29 @@
+.list
+  h2 Your Next Month Plan
+
+  .btn-group
+    a.btn.btn-default ui-sref="trips.list" role="button" Back
+    a.btn.btn-info print-btn="" role="button" Print
+
+  br
+  br
+  .btn-group
+    a.btn.btn-default ng-click="trips_ctrl.previousMonth()" role="button" Previous Month
+    a.btn.btn-info ng-click="trips_ctrl.nextMonth()" role="button" Next Month
+
+  .next-month__print-section(print-section)
+    h3 Plan for {{trips_ctrl.month()}}
+    table.table.table-bordered
+      thead
+        th Destination
+        th Start date
+        th End date
+        th Comment
+        th Days to start
+      tbody
+        tr.list__row ng-repeat="trip in trips_ctrl.trips"
+          td ng-bind="::trip.destination"
+          td.list__date ng-bind="::trip.start_date | dateFormat"
+          td.list__date ng-bind="::trip.end_date | dateFormat"
+          td ng-bind="::trip.comment"
+          td ng-bind="::trip.daysToStart()"

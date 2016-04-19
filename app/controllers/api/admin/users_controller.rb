@@ -1,7 +1,7 @@
 module Api
   module Admin
     class UsersController < Api::Admin::BaseController
-      before_action :api_authenticate_admin!
+      before_action :api_authenticate_manager!
 
       def index
         render_object(AdminUserPresenter.for_collection.new(User.all))

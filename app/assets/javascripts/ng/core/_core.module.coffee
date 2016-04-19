@@ -7,6 +7,7 @@
 #= require restangular
 #= require alertify
 #= require ui-router
+#= require angular-print/angularPrint
 #= require ng/app
 
 @core = angular.module('App.core', [
@@ -14,6 +15,7 @@
   'restangular'
   'ngAnimate'
   'ui.router'
+  'AngularPrint'
 ])
 
 @core.config ['$urlRouterProvider', ($urlRouterProvider) ->

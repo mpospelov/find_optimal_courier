@@ -1,8 +1,8 @@
 form.trips-filter-form
   trips-input(
     name="destination"
-    label="Destination"
-    placeholder="Destination"
+    label="Destination contains"
+    placeholder="Destination contains"
     type="text"
     model="query.destination")
   trips-input(
@@ -17,3 +17,7 @@ form.trips-filter-form
     placeholder="Ends before"
     type="date"
     model="query.ends_before")
+  .btn-group
+    button.btn.btn-info type="submit" ng-click="onSubmit()" Filter
+    button.btn.btn-danger type="reset" ng-click="onCancel()" Cancel
+    button.btn.btn-default type="button" ng-click="onClose()" Close

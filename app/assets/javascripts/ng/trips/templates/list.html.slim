@@ -1,15 +1,23 @@
 .list
   h2 Your Trips
 
-  a.btn.btn-success ui-sref="trips.new" role="button" Create new trip
+  .btn-group
+    a.btn.btn-success ui-sref="trips.new" role="button" Create new trip
+    a.btn.btn-info ui-sref="trips.next_month_list" role="button" Next month trips
 
   h3 Filters
   a.btn.btn-success(
     ng-click="trips_ctrl.toogleFilterForm()"
     role="button"
     ng-bind="trips_ctrl.filterFormBtnLabel()")
-  trips-filter-form.expand-animation ng-if="trips_ctrl.showFilter" query="trips_ctrl.query"
-
+  trips-filter-form.expand-animation(
+    ng-show="trips_ctrl.showFilter"
+    query="trips_ctrl.query"
+    on-submit="trips_ctrl.fetchTrips()"
+    on-cancel="trips_ctrl.cancelFilter()"
+    on-close="trips_ctrl.closeFilterForm()")
+  br
+  br
   table.table.table-bordered
     thead
       th Destination
@@ -24,7 +32,7 @@
         td.list__date ng-bind="::trip.start_date | dateFormat"
         td.list__date ng-bind="::trip.end_date | dateFormat"
         td ng-bind="::trip.comment"
-        td ng-bind="::trips_ctrl.daysToStart(trip)"
+        td ng-bind="::trip.daysToStart()"
         td.list__actions
           .btn-group
             a.btn.btn-success ui-sref="trips.edit({id: trip.id})" Edit
