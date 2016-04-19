@@ -1,0 +1,8 @@
+a.btn.btn-default ui-sref="admin.trips.list" role="button" Back
+
+h2 Edit Trip {{::trips_ctrl.trip.id}}
+admin-trip-form(
+  trip="trips_ctrl.trip"
+  trip-errors="trips_ctrl.errors"
+  on-submit="trips_ctrl.submit()"
+  users="trips_ctrl.users")

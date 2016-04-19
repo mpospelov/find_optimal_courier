@@ -4,11 +4,13 @@ module Api
       before_action :api_authenticate_user!
 
       def api_authenticate_admin!
-        render_message('You do not have permissions', PERMISSION_DENIED) unless current_user.admin?
+        return if current_user.admin?
+        render_message('You do not have permissions', PERMISSION_DENIED)
       end
 
       def api_authenticate_manager!
-        render_message('You do not have permissions', PERMISSION_DENIED) unless current_user.manager?
+        return if current_user.manager? || current_user.admin?
+        render_message('You do not have permissions', PERMISSION_DENIED)
       end
     end
   end

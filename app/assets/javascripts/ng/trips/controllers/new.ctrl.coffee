@@ -1,6 +1,6 @@
 class trips.NewController
   trips.controller 'trips.NewController', @
-  @inject: ['TripsService', '$state']
+  @$inject: ['TripsService', '$state']
 
   constructor: (@TripsService, @$state) ->
     @form = {}

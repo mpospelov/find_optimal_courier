@@ -1,10 +1,10 @@
 class admin_users.EditController
   admin_users.controller 'admin_users.EditController', @
-  @$inject: ['AdminUsersService', '$state']
+  @$inject: ['admin.UsersService', '$state']
 
-  constructor: (AdminUsersService, @$state) ->
+  constructor: (UsersService, @$state) ->
     @user = {}
-    AdminUsersService.one(@$state.params.id).get()
+    UsersService.one(@$state.params.id).get()
     .then (data) =>
       @user = data
     .catch =>

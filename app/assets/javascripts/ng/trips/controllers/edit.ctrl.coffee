@@ -1,6 +1,6 @@
 class trips.EditController
   trips.controller 'trips.EditController', @
-  @inject: ['TripsService', '$state']
+  @$inject: ['TripsService', '$state']
 
   constructor: (TripsService, @$state) ->
     TripsService.one(@$state.params.id).get()

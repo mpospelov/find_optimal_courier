@@ -1,6 +1,6 @@
 class trips.NextMonthList
   trips.controller 'trips.NextMonthList', @
-  @inject: ['TripsService', 'dateFormatFilter']
+  @$inject: ['TripsService', 'dateFormatFilter']
 
   constructor: (@TripsService, @dateFormatFilter) ->
     @selectedMonth = moment().add(1, 'month').startOf('month')

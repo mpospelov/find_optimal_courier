@@ -1,0 +1,28 @@
+.list
+  h2 All Trips
+
+  .btn-group
+    a.btn.btn-success ui-sref="admin.trips.new" role="button" Create new trip
+  br
+  br
+  table.table.table-bordered
+    thead
+      th Destination
+      th Start date
+      th End date
+      th Comment
+      th Owner
+      th
+    tbody
+      tr.list__row ng-repeat="trip in trips_ctrl.trips"
+        td ng-bind="::trip.destination"
+        td.list__date ng-bind="::trip.start_date | dateFormat"
+        td.list__date ng-bind="::trip.end_date | dateFormat"
+        td ng-bind="::trip.comment"
+        td
+          a ui-sref="admin.users.edit({id: trip.user_id})" ng-bind="::trip.user_email"
+        td.list__actions
+          .btn-group
+            a.btn.btn-success ui-sref="admin.trips.edit({id: trip.id})" Edit
+            a.btn.btn-danger ng-click="trips_ctrl.delete(trip)" Delete
+

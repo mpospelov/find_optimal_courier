@@ -1,9 +1,9 @@
 class admin_users.ListController
   admin_users.controller 'admin_users.ListController', @
-  @$inject: ['AdminUsersService']
+  @$inject: ['admin.UsersService']
 
-  constructor: (AdminUsersService) ->
-    AdminUsersService.getList()
+  constructor: (UsersService) ->
+    UsersService.getList()
     .then (data) =>
       @users = data
 

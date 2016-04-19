@@ -1,6 +1,6 @@
 class trips.ListController
   trips.controller 'trips.ListController', @
-  @inject: ['TripsService', 'dateFormatFilter']
+  @$inject: ['TripsService', 'dateFormatFilter']
 
   constructor: (@TripsService, @dateFormatFilter) ->
     @query = {}
