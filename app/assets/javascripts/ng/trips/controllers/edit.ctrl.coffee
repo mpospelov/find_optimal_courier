@@ -15,3 +15,5 @@ class trips.EditController
     .then =>
       @$state.go('trips.list')
       alertify.success('Trip succesfully updated!')
+    .catch (response) =>
+      @errors = response.data

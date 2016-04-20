@@ -12,8 +12,4 @@
     url: '/admin'
     abstract: true
     template: '<ui-view>'
-    resolve:
-      currentUser: ['SessionService', (SessionService) ->
-        SessionService.onFetchUser
-      ]
 ]

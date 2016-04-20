@@ -11,4 +11,5 @@ class admin_trips.NewController
     .then =>
       @$state.go('admin.trips.list')
       alertify.success('Trip succesfully created!')
-    .catch ->
+    .catch (response) =>
+      @errors = response.data

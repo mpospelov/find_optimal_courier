@@ -16,3 +16,5 @@ class admin_users.EditController
     .then =>
       @$state.go('admin.users.list')
       alertify.success('User succesfully updated!')
+    .catch (response) =>
+      @errors = response.data

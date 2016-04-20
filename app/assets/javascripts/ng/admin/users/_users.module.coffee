@@ -6,10 +6,11 @@
     url: '/users'
     abstract: true
     template: '<ui-view>'
-    onEnter: ['currentUser', '$state', (currentUser, $state) ->
-      return if currentUser.isManager() || currentUser.isAdmin()
-      $state.go('home')
-      alertify.error('You do not have permissions to visit this page')
+    onEnter: ['SessionService', '$state', (SessionService, $state) ->
+      SessionService.onFetchUser.then (user) ->
+        return if user.isManager() || user.isAdmin()
+        $state.go('home')
+        alertify.error('You do not have permissions to visit this page')
     ]
   .state 'admin.users.list',
     url: '/list'
