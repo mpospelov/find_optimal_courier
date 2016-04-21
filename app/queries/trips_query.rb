@@ -1,9 +1,4 @@
 class TripsQuery
-  SELECT_BY_MONTH_QUERY = <<-SQL.squish.freeze
-    EXTRACT(MONTH FROM start_date) = :month
-    AND EXTRACT(YEAR FROM start_date) = :year
-  SQL
-
   def initialize(scope, params)
     @scope = scope
     @params = params
@@ -37,6 +32,9 @@ class TripsQuery
   def filter_by_selected_month
     return if @params[:selected_month].blank?
     date = @params[:selected_month].to_date
-    @scope = @scope.where(SELECT_BY_MONTH_QUERY, month: date.month, year: date.year)
+    @scope = @scope.where(
+      'start_date >= :beginning AND start_date <= :end',
+      beginning: date.beginning_of_month,
+      end: date.end_of_month)
   end
 end

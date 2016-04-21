@@ -35,7 +35,7 @@ module Api
     end
 
     def destroy
-      Trip.destroy(params[:id])
+      current_user.trips.destroy(params[:id])
       render_message 'Successfully deleted'
     end
   end

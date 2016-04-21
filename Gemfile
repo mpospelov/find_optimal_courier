@@ -17,10 +17,13 @@ gem 'reform'
 gem 'virtus'
 gem 'multi_json'
 
+group :development do
+  gem 'web-console', '~> 2.0'
+end
+
 group :development, :test do
   gem 'quiet_assets'
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'rspec-rails', '~> 3.0'
   gem 'thin'
   gem 'timecop'

@@ -21,3 +21,5 @@
 
 en:
   hello: "Hello world"
+  login_error: 'You need to login to perform this action'
+  not_found: 'Not found'

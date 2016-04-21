@@ -1,7 +1,8 @@
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
 FactoryGirl.define do
   factory :user do
-    encrypted_password "MyString"
-    email "MyString"
-    role "MyString"
+    email { Faker::Internet.email }
+    password { Faker::Internet.password(8) }
   end
 end

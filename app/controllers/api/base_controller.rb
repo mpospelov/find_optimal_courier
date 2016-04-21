@@ -4,6 +4,15 @@ module Api
     UNAUTHORIZED = 401
     PERMISSION_DENIED = 403
     HTTP_OK = 200
+    NOT_FOUND = 404
+
+    rescue_from AuthenticationError do
+      render_message(I18n.t('login_error'), UNAUTHORIZED)
+    end
+
+    rescue_from ActiveRecord::RecordNotFound do
+      render_message(I18n.t('not_found'), NOT_FOUND)
+    end
 
     protected
 
@@ -20,7 +29,7 @@ module Api
     end
 
     def api_authenticate_user!
-      render_message('Needs to login', UNAUTHORIZED) unless user_signed_in?
+      render_message(I18n.t('login_error'), UNAUTHORIZED) unless user_signed_in?
     end
   end
 end

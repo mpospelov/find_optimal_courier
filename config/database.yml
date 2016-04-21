@@ -19,5 +19,5 @@ development: &development
   password: <%= ENV['POSTGRES_PASSWORD'] %>
 
 test:
-  <<: *default
+  <<: *development
   database: toptal_trips_test
