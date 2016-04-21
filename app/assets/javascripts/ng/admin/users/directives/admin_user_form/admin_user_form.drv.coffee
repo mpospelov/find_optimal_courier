@@ -1,4 +1,4 @@
-admin_users.directive 'adminUserForm', ->
+admin_users.directive 'adminUserForm', ['SessionService', (SessionService) ->
   restrict: 'E'
   templateUrl: 'admin/users/directives/admin_user_form/admin_user_form.html'
   scope:
@@ -8,3 +8,6 @@ admin_users.directive 'adminUserForm', ->
   link: (scope) ->
     scope.user.role ||= 'common'
     scope.onSubmit ||= _.noop
+
+    scope.currentUser = -> SessionService.user
+]

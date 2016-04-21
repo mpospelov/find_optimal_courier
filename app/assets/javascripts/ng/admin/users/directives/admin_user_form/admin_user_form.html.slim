@@ -14,6 +14,7 @@ form
     model="user.password"
     error="userErrors.password")
   trips-select(
+    ng-if="currentUser().isAdmin()"
     name="role"
     label="Role"
     model="user.role"
