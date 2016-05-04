@@ -16,6 +16,11 @@
     controller: 'trips.NextMonthList'
     controllerAs: 'trips_ctrl'
     templateUrl: 'trips/templates/next_month_list.html'
+  .state 'trips.next_day_map',
+    url: '/next_day_map'
+    controller: 'trips.NextDayMap'
+    controllerAs: 'trips_ctrl'
+    templateUrl: 'trips/templates/next_day_map.html'
   .state 'trips.new',
     url: '/new'
     controller: 'trips.NewController'

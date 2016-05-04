@@ -1,0 +1,16 @@
+.list
+  h2 Your Next Day Plan
+
+  .btn-group
+    a.btn.btn-default ui-sref="trips.list" role="button" Back
+    a.btn.btn-info print-btn="" role="button" Print
+
+  br
+  br
+  .btn-group
+    a.btn.btn-default ng-click="trips_ctrl.previousDay()" role="button" Previous Day
+    a.btn.btn-info ng-click="trips_ctrl.nextDay()" role="button" Next Day
+  br
+  br
+  .next-day-map
+    map trips="trips_ctrl.trips" ng-if="trips_ctrl.tripsLoaded"

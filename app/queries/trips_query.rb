@@ -9,6 +9,7 @@ class TripsQuery
     filter_by_starts_after
     filter_by_ends_before
     filter_by_selected_month
+    filter_by_selected_day
     @scope
   end
 
@@ -36,5 +37,14 @@ class TripsQuery
       'start_date >= :beginning AND start_date <= :end',
       beginning: date.beginning_of_month,
       end: date.end_of_month)
+  end
+
+  def filter_by_selected_day
+    return if @params[:selected_day].blank?
+    date = @params[:selected_day].to_date
+    @scope = @scope.where(
+      'start_date >= :beginning AND start_date <= :end',
+      beginning: date.beginning_of_day,
+      end: date.end_of_day)
   end
 end

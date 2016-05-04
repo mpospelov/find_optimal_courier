@@ -3,6 +3,10 @@
 @import "alertify/themes/alertify.core";
 @import "alertify/themes/alertify.bootstrap";
 @import "angular-print/angularPrint";
+@import "leaflet/dist/leaflet";
+@import "leaflet-routing-machine/dist/leaflet-routing-machine";
+
 @import "style";
 @import "common/list";
+@import "components/map";
 @import "trips/trips_filter_form";
