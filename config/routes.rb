@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
 
     resource :user, only: [:show]
+    resource :solutions, only: [:show, :create, :index]
     resource :registration, only: [:create]
     resource :session, only: [:create, :destroy]
     resources :trips, only: [:index, :create, :update, :destroy, :show]

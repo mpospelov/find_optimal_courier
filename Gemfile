@@ -16,6 +16,7 @@ gem 'representable'
 gem 'reform'
 gem 'virtus'
 gem 'multi_json'
+gem 'sidekiq'
 
 group :development do
   gem 'web-console', '~> 2.0'
@@ -31,4 +32,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'railroady'
 end

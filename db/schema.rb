@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504221021) do
+ActiveRecord::Schema.define(version: 20160511121228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "solutions", force: :cascade do |t|
+    t.hstore   "result",     default: {}
+    t.string   "state",      default: "start"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "user_id"
+    t.date     "date"
+  end
+
+  add_index "solutions", ["user_id"], name: "index_solutions_on_user_id", using: :btree
 
   create_table "trips", force: :cascade do |t|
     t.string   "destination"
@@ -38,5 +50,6 @@ ActiveRecord::Schema.define(version: 20160504221021) do
     t.datetime "updated_at",         null: false
   end
 
+  add_foreign_key "solutions", "users"
   add_foreign_key "trips", "users"
 end
