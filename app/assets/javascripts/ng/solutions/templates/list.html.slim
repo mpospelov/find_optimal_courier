@@ -1,0 +1,23 @@
+.list.list_solutions
+  h2 Your Solutions
+
+  .btn-group
+    a.btn.btn-success ui-sref="solutions.new" role="button" Create new solution
+
+  br
+  br
+  table.table.table-bordered
+    thead
+      th State
+      th Date
+      th
+    tbody
+      tr.list__row(
+        ng-repeat="solution in solutions_ctrl.solutions"
+        ng-class="solution.state")
+        td ng-bind="::solution.state"
+        td.list__date ng-bind="::solution.date | dateFormat"
+        td.list__actions
+          .btn-group
+            a.btn.btn-success ui-sref="solutions.show({id: solution.id})" Show
+

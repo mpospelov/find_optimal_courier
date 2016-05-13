@@ -26,6 +26,7 @@ module ToptalTodo
     config.generators.stylesheets = false
     config.generators.javascripts = false
     config.generators.helper = false
+    config.generators.controller_specs = false
     config.angular_templates.ignore_prefix = %w(ng/)
   end
 end

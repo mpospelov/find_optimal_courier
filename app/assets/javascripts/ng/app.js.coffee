@@ -4,6 +4,7 @@
 #= require_tree ./trips
 #= require_tree ./admin
 #= require_tree ./map
+#= require_tree ./solutions
 
 @app = angular.module 'App', [
   'App.core'
@@ -11,6 +12,7 @@
   'App.landing'
   'App.trips'
   'App.admin'
+  'App.solutions'
   'App.map'
 ]
 

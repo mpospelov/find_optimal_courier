@@ -26,4 +26,18 @@ $red: #F2DEDE;
       background: $green;
     }
   }
+
+  &_solutions {
+    .started {
+      background: $yellow;
+    }
+
+    .failed {
+      background: $red;
+    }
+
+    .completed {
+      background: $green;
+    }
+  }
 }

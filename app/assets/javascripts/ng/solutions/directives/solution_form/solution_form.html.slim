@@ -1,0 +1,12 @@
+form
+  trips-input(
+    name="date"
+    label="Date"
+    placeholder="Date"
+    type="date"
+    model="solution.date"
+    error="solutionErrors.date")
+
+  button.btn.btn-lg.btn-primary.btn-block(
+    ng-click="onSubmit()"
+    type="submit") Save

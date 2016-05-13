@@ -10,7 +10,8 @@ module Api
       render_message(I18n.t('login_error'), UNAUTHORIZED)
     end
 
-    rescue_from ActiveRecord::RecordNotFound do
+    rescue_from ActiveRecord::RecordNotFound do |e|
+      Rails.logger.debug e.inspect
       render_message(I18n.t('not_found'), NOT_FOUND)
     end
 

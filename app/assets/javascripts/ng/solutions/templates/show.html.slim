@@ -1,0 +1,13 @@
+.solution
+  h2 Solution \#{{::solutions_ctrl.solution.id}} for date {{::solutions_ctrl.solution.date | dateFormat}}
+
+  .btn-group
+    a.btn.btn-default ui-sref="solutions.list" role="button" Back
+    a.btn.btn-info print-btn="" role="button" Print
+
+  br
+  br
+  p ng-if="!solutions_ctrl.solution.isCompleted()"
+    |Solution is not completed yet. Wait until VRP algorithm finishes his work.
+  .solution-map print-section="" ng-if="solutions_ctrl.solution.isCompleted()"
+    map point-groups="solutions_ctrl.solution.result"

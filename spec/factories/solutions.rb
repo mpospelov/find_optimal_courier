@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :solution do
-    result ""
+    result { {} }
+    date { Faker::Date.forward(23) }
   end
 end

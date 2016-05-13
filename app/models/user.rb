@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :trips, dependent: :destroy
+  has_many :solutions, dependent: :destroy
 
   def password=(password)
     @password = password
