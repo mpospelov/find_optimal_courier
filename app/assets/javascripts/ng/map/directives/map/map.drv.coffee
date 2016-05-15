@@ -5,18 +5,18 @@
   scope:
     pointGroups: '='
   link: (scope, element) ->
-    scope.mapId = "map#{id}"
-    id++
-
+    scope.maps = []
     $$waypointGroups = _.map scope.pointGroups, (group) ->
-      _.map group, (point) -> L.latLng(point.latitude, point.longitude)
+      _.map group, (point) -> L.latLng(point[0], point[1])
 
-    $timeout ->
-      map = L.map(scope.mapId)
-      L.tileLayer(
-        'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-        attribution: '© OpenStreetMap contributors').addTo(map)
-
-      _.forEach $$waypointGroups, (group) ->
+    _.forEach $$waypointGroups, (group) ->
+      mapId = "map#{id}"
+      scope.maps.push(mapId)
+      id++
+      $timeout ->
+        map = L.map(mapId)
+        L.tileLayer(
+          'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+          attribution: '© OpenStreetMap contributors').addTo(map)
         L.Routing.control(waypoints: group).addTo(map)
 ]

@@ -10,4 +10,4 @@
   p ng-if="!solutions_ctrl.solution.isCompleted()"
     |Solution is not completed yet. Wait until VRP algorithm finishes his work.
   .solution-map print-section="" ng-if="solutions_ctrl.solution.isCompleted()"
-    map point-groups="solutions_ctrl.solution.result"
+    map point-groups="solutions_ctrl.solution.result.point_groups"

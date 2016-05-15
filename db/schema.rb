@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511121228) do
+ActiveRecord::Schema.define(version: 20160514233921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "solutions", force: :cascade do |t|
-    t.hstore   "result",     default: {}
     t.string   "state",      default: "start"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "user_id"
     t.date     "date"
+    t.jsonb    "result",     default: {}
   end
 
   add_index "solutions", ["user_id"], name: "index_solutions_on_user_id", using: :btree
