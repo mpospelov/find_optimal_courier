@@ -8,6 +8,7 @@ class trips.NewController
   submit: ->
     @TripsService.post(@form)
     .then =>
+      debugger
       @$state.go('trips.list')
       alertify.success('Trip succesfully created!')
     .catch (response) =>

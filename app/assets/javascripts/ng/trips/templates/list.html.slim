@@ -3,8 +3,6 @@
 
   .btn-group
     a.btn.btn-success ui-sref="trips.new" role="button" Create new trip
-    a.btn.btn-info ui-sref="trips.next_day_map" role="button" Next day map
-
 
   h3 Filters
   a.btn.btn-success(
@@ -25,15 +23,13 @@
       th Start date
       th End date
       th Comment
-      th Days to start
       th
     tbody
       tr.list__row ng-class="trips_ctrl.tripClasses(trip)" ng-repeat="trip in trips_ctrl.trips"
         td ng-bind="::trip.destination"
-        td.list__date ng-bind="::trip.start_date | dateFormat"
-        td.list__date ng-bind="::trip.end_date | dateFormat"
+        td.list__date ng-bind="::trip.start_date | dateTimeFormat"
+        td.list__date ng-bind="::trip.end_date | dateTimeFormat"
         td ng-bind="::trip.comment"
-        td ng-bind="::trip.daysToStart()"
         td.list__actions
           .btn-group
             a.btn.btn-success ui-sref="trips.edit({id: trip.id})" Edit

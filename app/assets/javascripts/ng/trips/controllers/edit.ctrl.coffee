@@ -1,14 +1,8 @@
 class trips.EditController
   trips.controller 'trips.EditController', @
-  @$inject: ['TripsService', '$state']
+  @$inject: ['trip', '$state']
 
-  constructor: (TripsService, @$state) ->
-    TripsService.one(@$state.params.id).get()
-    .then (data) =>
-      @trip = data
-    .catch =>
-      @$state.go('trips.list')
-      alertify.error('Trip not found')
+  constructor: (@trip, @$state) ->
 
   submit: ->
     @trip.customPUT(@trip)

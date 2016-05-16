@@ -21,4 +21,9 @@
     controller: 'trips.EditController'
     controllerAs: 'trips_ctrl'
     templateUrl: 'trips/templates/edit.html'
+    resolve:
+      trip: ['TripsService', '$stateParams', (TripsService, $stateParams) ->
+        TripsService.one($stateParams.id).get()
+      ]
+
 ]
