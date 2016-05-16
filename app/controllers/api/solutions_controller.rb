@@ -1,7 +1,5 @@
 module Api
   class SolutionsController < BaseController
-    before_filter :authenticate_user!
-
     def create
       form = SolutionForm.new(Solution.new(user: current_user))
       if form.validate(params)
@@ -13,7 +11,7 @@ module Api
     end
 
     def show
-      render_object SolutionPresenter.new(current_user.solutions.find(params[:id]))
+      render_object SolutionPresenter.new(Solution.find(params[:id]))
     end
 
     def index

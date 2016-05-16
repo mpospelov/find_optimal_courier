@@ -27,20 +27,7 @@ form
     type="text"
     model="trip.comment"
     error="tripErrors.comment")
-  trips-input(
-    name="latitude"
-    label="Latitude"
-    placeholder="Latitude"
-    type="number"
-    model="trip.latitude"
-    error="tripErrors.latitude")
-  trips-input(
-    name="longitude"
-    label="Longitude"
-    placeholder="Longitude"
-    type="number"
-    model="trip.longitude"
-    error="tripErrors.longitude")
+  #trip_map style="height: 400px; width: 900px;"
 
   button.btn.btn-lg.btn-primary.btn-block(
     ng-click="onSubmit()"
